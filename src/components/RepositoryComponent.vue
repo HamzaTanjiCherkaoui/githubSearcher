@@ -1,12 +1,12 @@
 <template>
-	<p>repository component</p>
+	<p >{{repository.name}}</p>
 
 </template>
 
 <script>
 export default {
   name: 'repository-component',
-  
+  props : ['repository']
 }
 </script>
 
