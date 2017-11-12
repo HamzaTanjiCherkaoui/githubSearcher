@@ -1,6 +1,6 @@
 <template>
   <footer>
-    Footer component
+    <label class="text-center">Made with Love - Hamza Tanji Chekaoui 2017</label>
   </footer>
 </div>
 </template>
@@ -14,5 +14,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+footer {
+	padding: 30px;
+}
 </style>

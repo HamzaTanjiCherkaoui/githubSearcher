@@ -1,7 +1,7 @@
 <template>
 	<div class="input-group">
       <div class="input-empty-icon"><i class="fa fa-search"></i></div>
-      <input type="text" placeholder="What are you looking for ? " v-model="query" v-on:keyup.enter="emitQuery(query)" class="form-input ubuntu">
+      <input type="text" placeholder="What are you looking for ? (press enter to submit your query)" v-model="query" v-on:keyup.enter="emitQuery(query)" class="form-input ubuntu">
     </div>
 
 </template>
@@ -15,6 +15,7 @@ export default {
   methods : {
     emitQuery(query) {
       this.$emit('queryEmited',query);
+      this.query =''
     }
   }
 }
