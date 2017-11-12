@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header @queryEmited="submitQuery"/>
-    <filter-component @criteriaChanged="filterRepositorie"></filter-component>
+    <filter-component @criteriaChanged="filterRepositorie" @orderChanged="sortRepositories"></filter-component>
     <div class="container">
       <div class="loading text-center" v-if="loading"> 
         <h5>loading ...</h5>
@@ -241,6 +241,9 @@ export default {
                           this.loading = false
                     })
         }
+    },
+    sortRepositories(order) {
+      console.log(order)
     },
     changePage(page) {
       console.log(page)
