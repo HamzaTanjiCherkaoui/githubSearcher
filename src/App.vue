@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header/>
+    <app-header @queryEmited="submitQuery"/>
     <filter-component @criteriaChanged="filterRepositorie"></filter-component>
     <div class="container">
     <repositories-component  :repositories="items"></repositories-component>  
@@ -99,6 +99,9 @@ export default {
   methods : {
     filterRepositorie(criteria) {
       console.log(criteria)
+    },
+    submitQuery(query) {
+      console.log("search for "+query)
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <header class="primary-gradient-bg">
     <h1 class="text-center roboto">Github Searcher</h1>
-    <search-component></search-component>
+    <search-component @queryEmited="emitQuery"></search-component>
   </header>
 </div>
 </template>
@@ -13,6 +13,11 @@ export default {
   name: 'app-header',
   components : {
     SearchComponent
+  },
+  methods : {
+    emitQuery(query) {
+      this.$emit('queryEmited' , query);
+    }
   }
   
 }
