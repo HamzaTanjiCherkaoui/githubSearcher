@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<h3>Results : </h3>	
+		<h2 class="roboto underline">Repositories : </h2>	
+		<hr>
 		<repository-component  v-for="repository in repositories" :repository="repository" v-bind:key="repository.id"></repository-component>	
 	</div>
 </template>
@@ -17,7 +18,6 @@ export default {
 	watch:{
 		repositories(newVal){
 			this.repositories = newVal
-			console.log("trig")
 		}
 	}
 } 

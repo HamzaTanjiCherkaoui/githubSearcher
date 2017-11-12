@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <label class="text-center">Made with Love - Hamza Tanji Chekaoui 2017</label>
+    <label class="text-center">Made with <i class="fa fa-heart secondary-color"></i> - Hamza Tanji Chekaoui 2017</label>
   </footer>
 </div>
 </template>

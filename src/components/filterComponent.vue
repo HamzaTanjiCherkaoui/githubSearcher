@@ -1,9 +1,9 @@
 <template>
 	<div class="filter-section">
 		<div class="controls">
-			<button class="box primary-bg icon-btn" @click="filterBy('stars')"><i class="fa fa-star"></i></button>
-			<button class="box primary-bg icon-btn" @click="filterBy('forks')"><i class="fa fa-code-fork"></i></button>
-			<button class="box primary-bg icon-btn" @click="filterBy('activity')" alt="activity"><i class="fa fa-bolt" ></i></button>
+			<button class="box primary-bg icon-btn" @click="filterBy('stars')" title="stars"><i class="fa fa-star"></i></button>
+			<button class="box primary-bg icon-btn" @click="filterBy('forks')" title="forks"><i class="fa fa-code-fork"></i></button>
+			<button class="box primary-bg icon-btn" @click="filterBy('updated')" title="activity"><i class="fa fa-bolt" ></i></button>
 		</div>
 	</div>
 
