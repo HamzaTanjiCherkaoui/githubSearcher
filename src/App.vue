@@ -3,10 +3,16 @@
     <app-header @queryEmited="submitQuery"/>
     <filter-component @criteriaChanged="filterRepositorie"></filter-component>
     <div class="container">
-      <div v-if="repositories && repositories.length">
-        <repositories-component  :repositories="repositories"></repositories-component>  
+      <div class="loading text-center" v-if="loading"> 
+        <h5>loading ...</h5>
       </div>
-      <pagination-component @pageChanged="changePage"></pagination-component>
+      <div v-if="repositories.length==0 && !loading">
+        <h4 class="text-center"> No Data found, submit a new Query please</h4>
+      </div>
+      <div v-if="repositories && repositories.length && !loading">
+        <repositories-component  :repositories="repositories"></repositories-component>  
+      <pagination-component :pageCount="pageCount"  @pageChanged="changePage"></pagination-component>
+      </div>
     </div>
     
     <app-footer/>
@@ -28,7 +34,9 @@ export default {
       repositories : [],
       currentQuery : '',
       currentCriteria : 'stars',
-      currentOrder : 'desc'
+      currentOrder : 'desc',
+      pageCount : 0,
+      loading : false
     }
   },
   components: {
@@ -40,21 +48,29 @@ export default {
   },
   methods : {
     filterRepositorie(criteria) {
-      this.currentCriteria = criteria;
+      this.currentCriteria = criteria
     },
     changePage(page) {
+      console.log(page)
+      this.pageCount = page
+      this.loading = true
       githubService.search(this.currentQuery,this.currentCriteria, this.currentOrder,page )
                    .then(data => {
                           this.repositories  = data.items 
+                          this.loading = false
                     })
     },
     submitQuery(query) {
-      this.currentQuery = query;
+      this.loading = true
+      this.currentQuery = query
       githubService.search(query).then(data => {
-        console.log(data);
-        this.repositories  = data.items ;
-        console.log(this.repositories);
+        this.loading = false
+        this.repositories  = data.items 
+        this.resetPageCount()
       })
+    },
+    resetPageCount(){
+      this.pageCount = 0
     }
   }
 }
@@ -63,14 +79,6 @@ export default {
 
 <style>
 
-/*#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  }*/
   </style>
 
   <style type="text/css" src="./assets/css/main.css"></style>

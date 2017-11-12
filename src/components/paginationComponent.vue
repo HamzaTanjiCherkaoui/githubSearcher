@@ -1,7 +1,7 @@
 <template>
 	<div class="pagination">
 		<div class="controls">
-			<button v-if="current!=0" class="box primary-bg icon-btn" @click="step(-1)"><i class="fa fa-arrow-left"></i></button>
+			<button v-if="pageCount!=0" class="box primary-bg icon-btn" @click="step(-1)"><i class="fa fa-arrow-left"></i></button>
 			<button class="box primary-bg icon-btn" @click="step(1)" alt="activity"><i class="fa fa-arrow-right" ></i></button>
 		</div>
 	</div>
@@ -11,16 +11,12 @@
 <script>
 export default {
 	name: 'pagination-component',
-	data () {
-		return {
-			current : 0 
-		}
-	},
+	props : ['pageCount'],
 	methods : {
 		step(stepOffset) {
-			this.current = this.current +stepOffset;
-			console.log(this.current);
-			this.$emit('pageChanged' ,this.current);
+			this.pageCount = this.pageCount +stepOffset;
+			console.log(this.pageCount);
+			this.$emit('pageChanged' ,this.pageCount);
 		}
 	}
 }
