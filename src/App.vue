@@ -2,7 +2,10 @@
   <div id="app">
     <app-header/>
     <filter-component></filter-component>
-    <repositories-component class="container" :repositories="items"></repositories-component>
+    <div class="container">
+    <repositories-component  :repositories="items"></repositories-component>  
+    </div>
+    
     <app-footer/>
   </div>
 </template>

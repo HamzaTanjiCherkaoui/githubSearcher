@@ -1,8 +1,7 @@
 <template>
-
 	<div>
-		<h2>Results : </h2>
-	<repository-component  v-for="repository in repositories" :repository="repository"></repository-component>	
+		<h3>Results : </h3>
+		<repository-component  v-for="repository in repositories" :repository="repository" v-bind:key="repository.id"></repository-component>	
 	</div>
 </template>
 
@@ -10,12 +9,12 @@
 import RepositoryComponent from './RepositoryComponent'
 
 export default {
-  name: 'repositories-component',
-  components : {
-  	RepositoryComponent
-  },
-  props:['repositories']
-  
+	name: 'repositories-component',
+	components : {
+		RepositoryComponent
+	},
+	props:['repositories']
+
 }
 </script>
 

@@ -1,6 +1,8 @@
 <template>
+	<div>
 	<p >{{repository.name}}</p>
-
+	<p >owner : {{repository.owner.login}}</p>
+	</div>
 </template>
 
 <script>
