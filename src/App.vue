@@ -1,16 +1,25 @@
 <template>
   <div id="app">
     <app-header/>
+    <filter-component></filter-component>
+    <repositories-component class="container"></repositories-component>
+    <app-footer/>
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader'
+import AppFooter from './components/AppFooter'
+import filterComponent from './components/filterComponent'
+import RepositoriesComponent from './components/RepositoriesComponent'
 
 export default {
   name: 'app',
   components: {
-    AppHeader
+    AppHeader,
+    RepositoriesComponent,
+    filterComponent,
+    AppFooter
   }
 }
 </script>
