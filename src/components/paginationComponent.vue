@@ -20,7 +20,7 @@ export default {
 		step(stepOffset) {
 			this.current = this.current +stepOffset;
 			console.log(this.current);
-			// this.$emit('criteriaChanged' , criteria);
+			this.$emit('pageChanged' ,this.current);
 		}
 	}
 }

@@ -4,9 +4,9 @@
     <filter-component @criteriaChanged="filterRepositorie"></filter-component>
     <div class="container">
       <div v-if="repositories && repositories.length">
-      <repositories-component  :repositories="repositories"></repositories-component>  
+        <repositories-component  :repositories="repositories"></repositories-component>  
       </div>
-      <pagination-component></pagination-component>
+      <pagination-component @pageChanged="changePage"></pagination-component>
     </div>
     
     <app-footer/>
@@ -25,7 +25,10 @@ export default {
   name: 'app',
   data()  {
     return {
-      repositories : []
+      repositories : [],
+      currentQuery : '',
+      currentCriteria : 'stars',
+      currentOrder : 'desc'
     }
   },
   components: {
@@ -37,9 +40,16 @@ export default {
   },
   methods : {
     filterRepositorie(criteria) {
-      console.log(criteria)
+      this.currentCriteria = criteria;
+    },
+    changePage(page) {
+      githubService.search(this.currentQuery,this.currentCriteria, this.currentOrder,page )
+                   .then(data => {
+                          this.repositories  = data.items 
+                    })
     },
     submitQuery(query) {
+      this.currentQuery = query;
       githubService.search(query).then(data => {
         console.log(data);
         this.repositories  = data.items ;
