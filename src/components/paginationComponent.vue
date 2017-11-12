@@ -1,7 +1,7 @@
 <template>
 	<div class="pagination">
 		<div class="controls">
-			<button class="box primary-bg icon-btn" @click="step(-1)"><i class="fa fa-arrow-left"></i></button>
+			<button v-if="current!=0" class="box primary-bg icon-btn" @click="step(-1)"><i class="fa fa-arrow-left"></i></button>
 			<button class="box primary-bg icon-btn" @click="step(1)" alt="activity"><i class="fa fa-arrow-right" ></i></button>
 		</div>
 	</div>
@@ -18,7 +18,8 @@ export default {
 	},
 	methods : {
 		step(stepOffset) {
-			console.log(stepOffset);
+			this.current = this.current +stepOffset;
+			console.log(this.current);
 			// this.$emit('criteriaChanged' , criteria);
 		}
 	}
