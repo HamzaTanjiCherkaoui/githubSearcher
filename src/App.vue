@@ -2,9 +2,10 @@
   <div id="app">
     <app-header @queryEmited="submitQuery"/>
     <filter-component @criteriaChanged="filterRepositorie" @orderChanged="sortRepositories"></filter-component>
-    <div class="container rounde-bordred">
+    <div class="container round-borders">
       <div class="loading text-center" v-if="loading"> 
         <h5>loading ...</h5>
+        <img src="./assets/images/loader.gif" height="32" width="32">
       </div>
       <div v-if="repositories.length==0 && !loading">
         <h4 class="text-center"> No Data found, submit a new Query please</h4>

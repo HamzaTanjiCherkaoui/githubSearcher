@@ -1,9 +1,9 @@
 <template>
 	<div class="repository">
-	<h3 class="roboto">{{repository.name}}</h3>
+	<h3 class=" big-text roboto"><i class="fa fa-github secondary-color big-text" aria-hidden="true"></i> {{repository.full_name}}</h3>
 	<div class="details ubuntu text-center">
-		<div><i class="fa fa-code-fork"></i>({{repository.forks}} fork)</div>
-		<div><i class="fa fa-eye"></i>({{repository.watchers}} watcher)</div>
+		<div><i class="fa fa-code-fork"></i>({{repository.forks}} forks)</div>
+		<div><i class="fa fa-eye"></i>({{repository.watchers}} watchers)</div>
 		<div><i class="fa fa-user"></i>{{repository.owner.login}}</div>
 		<div></div>
 	</div>
@@ -34,5 +34,7 @@ export default {
 .repository .details i {
 	margin-right:10px;
 }
-
+.big-text {
+	font-size: 20px;
+}
 </style>

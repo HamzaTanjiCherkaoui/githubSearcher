@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="roboto underline">Repositories : </h2>	
+		<h1 class="roboto underline secondary-color">Repositories : </h1>	
 		<hr>
 		<repository-component  v-for="repository in repositories" :repository="repository" v-bind:key="repository.id"></repository-component>	
 	</div>
