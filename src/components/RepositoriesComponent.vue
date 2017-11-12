@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h3>Results : </h3>
+		<h3>Results : </h3>	
 		<repository-component  v-for="repository in repositories" :repository="repository" v-bind:key="repository.id"></repository-component>	
 	</div>
 </template>
@@ -13,9 +13,14 @@ export default {
 	components : {
 		RepositoryComponent
 	},
-	props:['repositories']
-
-}
+	props:['repositories'],
+	watch:{
+		repositories(newVal){
+			this.repositories = newVal
+			console.log("trig")
+		}
+	}
+} 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

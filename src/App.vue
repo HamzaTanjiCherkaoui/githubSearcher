@@ -3,7 +3,9 @@
     <app-header @queryEmited="submitQuery"/>
     <filter-component @criteriaChanged="filterRepositorie"></filter-component>
     <div class="container">
-      <repositories-component  :repositories="items"></repositories-component>  
+      <div v-if="repositories && repositories.length">
+      <repositories-component  :repositories="repositories"></repositories-component>  
+      </div>
     </div>
     
     <app-footer/>
@@ -37,11 +39,13 @@ export default {
     submitQuery(query) {
       githubService.search(query).then(data => {
         console.log(data);
-        this.repositories = data;
+        this.repositories  = data.items ;
+        console.log(this.repositories);
       })
     }
   }
 }
+
 </script>
 
 <style>
