@@ -12,14 +12,14 @@
 export default {
 	name: 'pagination-component',
 	data() {
-		return {pageCount : 0 }
+		return {pageCounts : this.pageCount }
 	},
 	props : ['pageCount'],
 	methods : {
 		step(stepOffset) {
-			this.pageCount = this.pageCount +stepOffset;
-			console.log(this.pageCount);
-			this.$emit('pageChanged' ,this.pageCount);
+			this.pageCounts = this.pageCounts +stepOffset;
+			console.log(this.pageCounts);
+			this.$emit('pageChanged' ,this.pageCounts);
 		}
 	}
 }
