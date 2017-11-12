@@ -11,6 +11,9 @@
 <script>
 export default {
 	name: 'pagination-component',
+	data() {
+		return {pageCount : 0 }
+	},
 	props : ['pageCount'],
 	methods : {
 		step(stepOffset) {

@@ -49,46 +49,37 @@ export default {
   methods : {
     filterRepositorie(criteria) {
       this.currentCriteria = criteria
-      
-      if(this.currentQuery != '') {
-          this.loading = true
-          githubService.search(this.currentQuery,this.currentCriteria, this.currentOrder)
-                       .then(data => {
-                          this.repositories  = data.items 
-                          this.loading = false
-                    })
-        }
+      this.search();
     },
     sortRepositories(order) {
       this.currentOrder = order
-      if(this.currentQuery != '') {
-      this.loading = true
-      githubService.search(this.currentQuery,this.currentCriteria, this.currentOrder)
-                   .then(data => {
-                          this.repositories  = data.items 
-                          this.loading = false
-                    })
-                 }
+      this.search();
 
     },
     changePage(page) {
-      console.log(page)
       this.pageCount = page
-      this.loading = true
-      githubService.search(this.currentQuery,this.currentCriteria, this.currentOrder,page )
-                   .then(data => {
-                          this.repositories  = data.items 
-                          this.loading = false
-                    })
+      this.search();
     },
     submitQuery(query) {
-      this.loading = true
       this.currentQuery = query
-      githubService.search(query).then(data => {
-        this.loading = false
-        this.repositories  = data.items 
-        this.resetPageCount()
+      if(this.currentQuery != '') {      
+       this.loading = true
+        githubService.search(query).then(data => {
+            this.loading = false
+            this.repositories  = data.items 
+            this.resetPageCount()
       })
+      }
+    },
+    search(query=this.currentQuery,criteria=this.currentCriteria,order=this.currentOrder,page=this.pageCount) {
+
+      if(this.currentQuery != '') {      
+       this.loading = true
+        githubService.search(query,criteria,order,page).then(data => {
+            this.loading = false
+            this.repositories  = data.items 
+      })
+}
     },
     resetPageCount(){
       this.pageCount = 0
