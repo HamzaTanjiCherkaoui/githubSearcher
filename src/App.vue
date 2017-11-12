@@ -6,6 +6,7 @@
       <div v-if="repositories && repositories.length">
       <repositories-component  :repositories="repositories"></repositories-component>  
       </div>
+      <pagination-component></pagination-component>
     </div>
     
     <app-footer/>
@@ -18,6 +19,7 @@ import AppFooter from './components/AppFooter'
 import filterComponent from './components/filterComponent'
 import RepositoriesComponent from './components/RepositoriesComponent'
 import githubService from './services/github.service'
+import paginationComponent from './components/paginationComponent'
 
 export default {
   name: 'app',
@@ -30,6 +32,7 @@ export default {
     AppHeader,
     RepositoriesComponent,
     filterComponent,
+    paginationComponent,
     AppFooter
   },
   methods : {
