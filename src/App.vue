@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header/>
-    <filter-component></filter-component>
+    <filter-component @criteriaChanged="filterRepositorie"></filter-component>
     <div class="container">
     <repositories-component  :repositories="items"></repositories-component>  
     </div>
@@ -95,6 +95,11 @@ export default {
     RepositoriesComponent,
     filterComponent,
     AppFooter
+  },
+  methods : {
+    filterRepositorie(criteria) {
+      console.log(criteria)
+    }
   }
 }
 </script>
