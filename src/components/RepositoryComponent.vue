@@ -2,10 +2,11 @@
 	<div class="repository">
 	<div class=" heading">
 		<img :src="repository.owner.avatar_url" height="20" width="20" />
-		<h3 class="big-text roboto">{{repository.full_name}}</h3>
+		<h3 class="big-text roboto"> <a :href="repository.html_url" target="_blank">{{repository.full_name}}</a></h3>
 	</div>
 	<div class="details ubuntu text-center">
 		<div class="forks"><i class="fa fa-code-fork"></i>({{repository.forks}} forks)</div>
+		<div class="stars"><i class="fa fa-code-star"></i>({{repository.stargazers_count}} stars)</div>
 		<div class="watchers"><i class="fa fa-eye"></i>({{repository.watchers}} watchers)</div>
 		<div class="user">
 			<i class="fa fa-user"></i>{{repository.owner.login}}</div>
@@ -24,6 +25,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+a {
+	text-decoration: none;
+	color: #051937;
+}
 .repository {
 	border-bottom: 1px solid #eee;
 	display: grid;
@@ -43,7 +48,7 @@ export default {
 	color: #ccc;
 	font-size: 14px;
 	display: grid;
-	grid-template-columns: repeat(20,1fr);
+	grid-template-columns: repeat(30,1fr);
 }
 .repository .details i {
 	margin-right:10px;
@@ -53,19 +58,25 @@ export default {
 }
 .forks {
 	grid-column-start: 1;
-	grid-column-end: 4;
+	grid-column-end: 5;
+	text-align: left;
+}
+
+.stars {
+	grid-column-start:5;
+	grid-column-end: 10;
 	text-align: left;
 }
 
 .watchers {
-	grid-column-start: 4;
-	grid-column-end: 8;
+	grid-column-start: 10;
+	grid-column-end: 17;
 	text-align: left;
 
 }
 .user {
-	grid-column-start: 8;
-	grid-column-end: 20;
+	grid-column-start: 17;
+	grid-column-end: 30;
 	text-align: left;
 }
 .repository img {
